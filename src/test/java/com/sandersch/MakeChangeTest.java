@@ -30,15 +30,15 @@ public class MakeChangeTest
         return new TestSuite( MakeChangeTest.class );
     }
 
-    public void testMakeChange()
+    public void test59inAmerican()
     {
-        testMakesCorrectChange( 39, Arrays.asList( 1, 5, 10, 25 ), 
-                                Arrays.asList( 25, 10, 1, 1, 1, 1 )); 
+        assertEquals( Arrays.asList( 25, 25, 5, 1, 1, 1, 1 ),
+                      MakeChange.change( 59, Arrays.asList(1, 5, 10, 25 )));
     }
 
-    public void testMakesCorrectChange( int amount, List<Integer> coins, List<Integer> rightAnswer )
+    public void test39inAmerican()
     {
-        List<Integer> result = MakeChange.change( amount, coins );
-        assertEquals( result, rightAnswer );
+        assertEquals( Arrays.asList( 25, 10, 1, 1, 1, 1 ),
+                      MakeChange.change( 39, Arrays.asList(1, 5, 10, 25 )));
     }
 }
