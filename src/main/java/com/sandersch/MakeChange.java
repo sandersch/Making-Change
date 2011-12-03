@@ -15,8 +15,7 @@ public class MakeChange
 
     public static List<Integer> change( int amount, List<Integer> coins )
     {
-        Collections.sort( coins );
-        Collections.reverse( coins );
+        Collections.sort( coins, Collections.reverseOrder());
 
         List<Integer> results = new ArrayList<Integer>();
 
