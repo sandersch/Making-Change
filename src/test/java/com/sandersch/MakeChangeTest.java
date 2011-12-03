@@ -30,9 +30,6 @@ public class MakeChangeTest
         return new TestSuite( MakeChangeTest.class );
     }
 
-    /**
-     * Rigourous Test :-)
-     */
     public void testMakeChange()
     {
         testMakesCorrectChange( 39, Arrays.asList( 1, 5, 10, 25 ), 
