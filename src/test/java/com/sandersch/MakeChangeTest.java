@@ -35,10 +35,13 @@ public class MakeChangeTest
      */
     public void testMakeChange()
     {
-        Integer[] coins = { 1, 5, 10, 25 }; 
-        Integer[] rightAnswer = { 25, 10, 1, 1, 1, 1, }; 
+        testMakesCorrectChange( 39, Arrays.asList( 1, 5, 10, 25 ), 
+                                Arrays.asList( 25, 10, 1, 1, 1, 1 )); 
+    }
 
-        List<Integer> result = MakeChange.change( 39, Arrays.asList( coins ));
-        assertTrue( result.equals( Arrays.asList( rightAnswer )));
+    public void testMakesCorrectChange( int amount, List<Integer> coins, List<Integer> rightAnswer )
+    {
+        List<Integer> result = MakeChange.change( amount, coins );
+        assertEquals( result, rightAnswer );
     }
 }
