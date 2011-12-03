@@ -4,6 +4,8 @@ import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 
+import java.util.*;
+
 /**
  * Unit test for simple MakeChange.
  */
@@ -33,6 +35,10 @@ public class MakeChangeTest
      */
     public void testMakeChange()
     {
-        assertTrue( true );
+        Integer[] coins = { 1, 5, 10, 25 }; 
+        Integer[] rightAnswer = { 25, 10, 1, 1, 1, 1, }; 
+
+        List<Integer> result = MakeChange.change( 39, Arrays.asList( coins ));
+        assertTrue( result.equals( Arrays.asList( rightAnswer )));
     }
 }
