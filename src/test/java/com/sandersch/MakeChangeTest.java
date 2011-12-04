@@ -66,5 +66,9 @@ public class MakeChangeTest
                       MakeChange.change( 1000001, Arrays.asList( 1000000, 1 )));
         assertEquals( Arrays.asList( 10000000, 1 ),
                       MakeChange.change( 10000001, Arrays.asList( 10000000, 1 )));
+        assertEquals( Arrays.asList( 100000000, 1 ),
+                      MakeChange.change( 100000001, Arrays.asList( 100000000, 1 )));
+        assertEquals( Arrays.asList( 1000000, 1 ),
+                      MakeChange.change( 1000001, Arrays.asList( 1000000, 2, 1 )));
     }
 }
