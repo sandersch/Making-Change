@@ -84,7 +84,6 @@ public class MakeChange
 
         // if we couldn't find a solution, return null
         // XXX: is there something better to return here?
-        // TODO: test case for unsolveable change
         if( null == solutions[amount] )
         {
             return null;
@@ -93,7 +92,6 @@ public class MakeChange
         // Otherwise, walk the solutions tree to find our full solution
         List<Integer> results = new ArrayList<Integer>();
         Node cursor = solutions[amount];
-        // XXX: what about solution for amount == 0?
         while( 0 != cursor.coin )
         {
             results.add( cursor.coin );
