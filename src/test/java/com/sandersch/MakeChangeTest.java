@@ -59,4 +59,12 @@ public class MakeChangeTest
         assertEquals( Arrays.asList(),
                       MakeChange.change( 0, Arrays.asList( 4, 2 )));
     }
+
+    public void testBigAmountWithBigCoin()
+    {
+        assertEquals( Arrays.asList( 1000000, 1 ),
+                      MakeChange.change( 1000001, Arrays.asList( 1000000, 1 )));
+        assertEquals( Arrays.asList( 10000000, 1 ),
+                      MakeChange.change( 10000001, Arrays.asList( 10000000, 1 )));
+    }
 }
