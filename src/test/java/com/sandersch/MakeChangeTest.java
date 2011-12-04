@@ -53,4 +53,10 @@ public class MakeChangeTest
         assertEquals( null,
                       MakeChange.change( 7, Arrays.asList( 4, 2 )));
     }
+    
+    public void testNoChange()
+    {
+        assertEquals( Arrays.asList(),
+                      MakeChange.change( 0, Arrays.asList( 4, 2 )));
+    }
 }
