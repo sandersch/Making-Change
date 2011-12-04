@@ -8,23 +8,6 @@ import java.util.*;
  */
 public class MakeChange 
 {
-    public static void main( String[] args )
-    {
-        System.out.println( "Hello World!" );
-    }
-
-    public static List<Integer> greedy( int amount, List<Integer> coins )
-    {
-        List<Integer> results = new ArrayList<Integer>();
-        for( Integer coin : coins )
-        {
-            int count = amount / coin;
-            amount %= coin;
-            for( int i = 0 ; i < count ; i++ ) { results.add( coin ); }
-        }
-        return results;
-    }
-
     /**
      * Dynamic programming solution for change making.
      *
