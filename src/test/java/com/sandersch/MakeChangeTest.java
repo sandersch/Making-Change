@@ -79,4 +79,12 @@ public class MakeChangeTest
         assertEquals( Arrays.asList( 9, 2 ),
                       MakeChange.change( 11, Arrays.asList( 10, 9, 2 )));
     }
+
+    public void testShouldHaveGoodPruning()
+    {
+        assertEquals( Arrays.asList( 5, 5, 5, 2, 2 ),
+                      MakeChange.change( 19, Arrays.asList( 5, 2, 1 )));
+        assertEquals( Arrays.asList( 5, 5, 5, 5, 5, 5, 5, 2, 2 ),
+                      MakeChange.change( 39, Arrays.asList( 5, 2, 1 )));
+    }
 }
