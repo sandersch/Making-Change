@@ -103,4 +103,16 @@ public class MakeChangeTest
             97, 97, 97, 97, 97, 97, 97, 97, 97, 97, 97, 97, 97, 97, 89, 7, 5 ),
                       MakeChange.change( 4563, primeMoney ));
     }
+
+    public void testWithCombinationTrick()
+    {
+        List<Integer> twoPowerMoney = new ArrayList<Integer>();
+        for( int i = 1 ; i < 10 ; i++ )
+        {
+            twoPowerMoney.add( (int)(Math.pow( 2.0, i )));
+        }
+
+        assertEquals( null,
+                      MakeChange.change( (int)(Math.pow( 2.0, 10 ) - 1), twoPowerMoney ));
+    }
 }
