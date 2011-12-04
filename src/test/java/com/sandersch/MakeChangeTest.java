@@ -41,10 +41,11 @@ public class MakeChangeTest
         assertEquals( Arrays.asList( 25, 10, 1, 1, 1, 1 ),
                       MakeChange.change( 39, Arrays.asList(1, 5, 10, 25 )));
     }
-    
+
     public void testAlienMoney()
     {
         assertEquals( Arrays.asList( 7, 7 ),
                       MakeChange.change( 14, Arrays.asList(10, 7, 1 )));
     }
+ 
 }
