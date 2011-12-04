@@ -87,4 +87,20 @@ public class MakeChangeTest
         assertEquals( Arrays.asList( 5, 5, 5, 5, 5, 5, 5, 2, 2 ),
                       MakeChange.change( 39, Arrays.asList( 5, 2, 1 )));
     }
+
+    public void testPrimeNumberCoins()
+    {
+        List<Integer> primeMoney = Arrays.asList( 
+            97, 89, 83, 79, 73, 71, 67, 61, 59, 53, 47, 43,
+            41, 37, 31, 29,23, 19, 17, 13, 11, 7, 5, 3
+        );
+
+        assertEquals( Arrays.asList( 89, 7, 5 ),
+                      MakeChange.change( 101, primeMoney ));
+        assertEquals( Arrays.asList( 
+            97, 97, 97, 97, 97, 97, 97, 97, 97, 97, 97, 97, 97, 97, 97, 97, 
+            97, 97, 97, 97, 97, 97, 97, 97, 97, 97, 97, 97, 97, 97, 97, 97, 
+            97, 97, 97, 97, 97, 97, 97, 97, 97, 97, 97, 97, 97, 97, 89, 7, 5 ),
+                      MakeChange.change( 4563, primeMoney ));
+    }
 }
