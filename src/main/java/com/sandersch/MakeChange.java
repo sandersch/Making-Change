@@ -40,8 +40,8 @@ public class MakeChange
         Node root = new Node( null, 0, 0, 0 );
         // n-th entry in solutions array holds the leaf node of optimal 
         // solution for amount = n. 
-        Node[] solutions = new Node[amount+1];
-        solutions[0] = root;
+        Map<Integer,Node> solutions = new HashMap<Integer,Node>();
+        solutions.put( 0, root );
         // This queue holds a worklist of partial solutions that we use to 
         // build larger solutions. We seed the list with the zero coin
         // solution and build out solutions from there
@@ -50,8 +50,8 @@ public class MakeChange
 
         // We process a queue of partial solutions and add a single coin
         // to each solution to build larger partial solutions that are added
-        // to the queue until we find our desired solution for amount
-        while( !queue.isEmpty() )
+        // to the queue until we find our desired solution
+        while( !queue.isEmpty() && !solutions.containsKey( amount ) )
         {
             Node node = queue.remove();
             // Add coins to existing solution to find larger optimal solutions.
@@ -60,10 +60,10 @@ public class MakeChange
             {
                 int coin = coins.get(index);
                 int newTotal = node.total + coin;  
-        
+
                 // Prune solutions that aren't useful since they are bigger
                 // than our target amount or that we have already solved
-                if( (newTotal > amount) || (solutions[newTotal] != null) )
+                if( (newTotal > amount) || solutions.containsKey(newTotal) )
                 {
                     continue;
                 }
@@ -71,10 +71,13 @@ public class MakeChange
                 // This must me an optimal solution we haven't seen yet, so
                 // add it to the list of solutions
                 Node newNode = new Node( node, coin, newTotal, index );
-                solutions[newTotal] = newNode;
+                solutions.put( newTotal, newNode);
                 
                 // Stop now if we've found our answer!
-                if( newTotal == amount ) { break; }
+                if( newTotal == amount )
+                {
+                    break;
+                }
                
                 // Otherwise add the new solution to the worklist and continue
                 // finding solutions
@@ -84,25 +87,29 @@ public class MakeChange
 
         // if we couldn't find a solution, return null
         // XXX: is there something better to return here?
-        if( null == solutions[amount] )
+        if( !solutions.containsKey( amount ) )
         {
             return null;
         }
 
         // Otherwise, walk the solutions tree to find our full solution
-        List<Integer> results = new ArrayList<Integer>();
-        Node cursor = solutions[amount];
-        while( 0 != cursor.coin )
-        {
-            results.add( cursor.coin );
-            cursor = cursor.parent;
-        }
+        List<Integer> results = expandSolution( solutions.get( amount ));
        
         // reverse the order of the results for we are in descending order
         // like the list of coins we used for this solution
         Collections.reverse( results );
-        return results;
 
+        return results;
+    }
+
+    private static List<Integer> expandSolution( Node leaf )
+    {
+        List<Integer> results = new ArrayList<Integer>();
+        for( Node node = leaf ; null != node.parent ; node = node.parent )
+        {
+            results.add( node.coin );
+        }
+        return results;
     }
 
     public static List<Integer> change( int amount, List<Integer> coins )
