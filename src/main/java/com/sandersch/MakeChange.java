@@ -16,6 +16,7 @@ public class MakeChange
      * @param coins     The coins we should use to find a solution
      *
      * @return          A list containing the minimal coins that total amount
+     *                  If there is no possible solution, returns null
      **/
     public static List<Integer> change( int amount, List<Integer> coins )
     {
@@ -32,6 +33,8 @@ public class MakeChange
      * @param amount    The our target amount for making change
      *
      * @return          A list containing the minimal coins that total amount
+     *                  If there is no possible solution, returns null
+     **/
      **/
     public static List<Integer> change( int amount )
     {
@@ -45,6 +48,8 @@ public class MakeChange
      * @param coins     A sorted list of coins to use when forming the solution  
      *
      * @return          The coins that form the minimal solution for amount
+     *                  If there is no possible solution, returns null
+     **/
      **/
     public static List<Integer> dynamic( int amount, List<Integer> coins )
     {
