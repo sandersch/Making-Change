@@ -115,4 +115,14 @@ public class MakeChangeTest
         assertEquals( null,
                       MakeChange.change( (int)(Math.pow( 2.0, 10 ) - 1), twoPowerMoney ));
     }
+
+
+    public void testSwissPaperMoney()
+    {
+        List<Integer> swissPaperMoney = Arrays.asList(
+                1000, 500, 200, 100, 50, 20, 10, 5, 2, 1 );
+
+        assertEquals( Arrays.asList( 1000, 500, 200, 50, 20, 10, 5, 2, 2 ),
+                      MakeChange.change( 1789, swissPaperMoney ));
+    }
 }
