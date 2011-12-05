@@ -25,6 +25,20 @@ public class MakeChange
     }
 
     /**
+     * One argument version of change that expects only a single argument
+     * of an amount to make change for that defaults to using common American
+     * coin denominations like the quiz specifies
+     *
+     * @param amount    The our target amount for making change
+     *
+     * @return          A list containing the minimal coins that total amount
+     **/
+    public static List<Integer> change( int amount )
+    {
+        return change( amount, Arrays.asList( 25, 10, 5, 1 ));
+    }
+
+    /**
      * Dynamic programming solution for change making.
      *
      * @param amount    The amount of change we need to find
